@@ -1,0 +1,6 @@
+classes = 6
+train = /home/monielly/facadeglass_dataset/train.txt
+valid = /home/monielly/facadeglass_dataset/test.txt
+names = /home/monielly/facadeglass_dataset/classes.txt
+backup = /home/monielly/facadeglass_dataset/backup-weights
+

@@ -1,0 +1,45 @@
+./darknet detector train /home/monielly/Projeto-yolo/window.data /home/monymon/Projeto-yolo/window.cfg /home/monymon/Projeto-yolo/yolov7-tiny.weights
+
+./darknet detector train /home/monielly/Projeto-yolo/window.data /home/monielly/Projeto-yolo/yolov7-tiny.cfg /home/monielly/Projeto-yolo/yolov7-tiny.weights
+
+If you want to train from the beginning, then use flag in the end of training command: -clear 
+
+./darknet detector map /home/monielly/Projeto-yolo/window.data /home/monielly/Projeto-yolo/yolov7-tiny.cfg /home/monielly/Projeto-yolo/backup-weights/yolov7-tiny_10000.weights
+
+python3 darknet_images.py\ 
+--weights ./home/monielly/Projeto-yolo/backup-weights/yolov7-tiny_last.weights\
+--data_file ./home/monielly/Projeto-yolo/window.data\
+--config_file ./home/monielly/Projeto-yolo/yolov7-tiny.cfg\
+--tresh 0.5\
+--input ./home/monielly/Projeto-yolo/treinamento/cmp_b0005.jpg\
+--ext_output
+
+
+python3 ./home/monielly/Projeto-yolo/darknet_images.py\ --weights ./home/monielly/Projeto-yolo/backup-weights/yolov7-tiny_10000.weights\ --data_file ./home/monielly/Projeto-yolo/window.data\ --config_file ./home/monielly/Projeto-yolo/yolov7-tiny.cfg\ --thresh 0.5\ --input ./home/monielly/Projeto-yolo/treinamento/cmp_b0005.jpg\ --ext_output
+
+
+python3 ./darknet_images.py --weights /home/monielly/Projeto-yolo/backup-weights/yolov7-tiny_last.weights --data_file /home/monielly/Projeto-yolo/window.data --config_file /home/monielly/Projeto-yolo/yolov7-tiny.cfg --thresh 0.5 --input /home/monielly/Projeto-yolo/treinamento/cmp_b0005.jpg --ext_output
+
+
+./darknet detector train /home/monielly/building-facade/data.data /home/monielly/building-facade/yolov7-tiny.cfg /home/monielly/building-facade/backup-weights/yolov7-tiny_last.weights
+
+./darknet detector train /home/monielly/Projeto-yolo/window.data /home/monielly/Projeto-yolo/yolov7-tiny.cfg /home/monielly/Projeto-yolo/backup-weights/yolov7-tiny_last.weights
+
+./darknet detector train /home/monielly/dataset-glass/window.data /home/monielly/dataset-glass/yolov7-tiny.cfg /home/monielly/dataset-glass/yolov7-tiny.weights 2>&1 | tee treinamento_normal.log
+
+python3 ./darknet_images.py --weights /home/monielly/dataset-glass/backup-weights/yolov7-tiny_last.weights --data_file /home/monielly/dataset-glass/window.data --config_file /home/monielly/dataset-glass/yolov7-tiny.cfg --thresh 0.5 --input /home/monielly/dataset-glass/train/8.jpg --ext_output
+
+./darknet detector map /home/monielly/dataset-glass/window.data /home/monielly/dataset-glass/yolov7_alta.cfg /home/monielly/dataset-glass/backup-weights/yolov7_alta_last.weights
+
+2>&1 | tee treinamento_avg_rate.log
+
+./darknet detector train /home/monielly/dataset-glass/window.data /home/monielly/dataset-glass/yolov7_alta.cfg /home/monielly/dataset-glass/yolov7-tiny.weights 2>&1 | tee treinamento_altaA.log
+
+
+./darknet detector train /home/monielly/facadeglass_dataset/window.data /home/monielly/facadeglass_dataset/yolov7_baixa.cfg /home/monielly/facadeglass_dataset/yolov7-tiny.weights
+
+./darknet detector map /home/monielly/facadeglass_dataset/window.data /home/monielly/facadeglass_dataset/yolov7_baixa.cfg /home/monielly/facadeglass_dataset/backup-weights/yolov7_baixa_last.weights
+
+
+python3 ./darknet_images.py --weights /home/monielly/facadeglass_dataset/backup-weights/yolov7_baixa_last.weights --data_file /home/monielly/facadeglass_dataset/window.data --config_file /home/monielly/facadeglass_dataset/yolov7_baixa.cfg --thresh 0.5 --input /home/monielly/facadeglass_dataset/train/1.jpg --ext_output
+
